@@ -1,4 +1,5 @@
 .env
 vw-data/
+build/
 *.log
 .DS_Store
