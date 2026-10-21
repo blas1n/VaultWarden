@@ -4,7 +4,8 @@ set -euo pipefail
 # Renew LE cert for vault.bsvibe.dev when within 30 days of expiry, then
 # kick caddy to reload the new cert.
 
-source "$HOME/VaultWarden/.env"
+# Kept out of .env so the token never reaches the vaultwarden container.
+source "$HOME/VaultWarden/cloudflare.env"
 export CLOUDFLARE_DNS_API_TOKEN="$CLOUDFLARE_API_TOKEN"
 
 LOG="$HOME/VaultWarden/cert-renew.log"

@@ -1,12 +1,14 @@
 services:
   vaultwarden:
-    image: vaultwarden/server:1.35.8
+    image: vaultwarden/server:1.37.3
     container_name: vaultwarden
     restart: unless-stopped
     ports:
       - "127.0.0.1:8222:80"
     volumes:
       - ./vw-data:/data
+    # .env: ADMIN_TOKEN / SMTP only. The Cloudflare DNS token lives in cloudflare.env,
+    # read by scripts/cert-renew.sh alone, so it never enters the container.
     env_file: .env
     environment:
       DOMAIN: https://vault-cf.bsvibe.dev
